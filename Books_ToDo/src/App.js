@@ -41,7 +41,6 @@ export default class App extends Component {
         const getVisibleNotes = (allnotes, filter) => allnotes.filter(note => note.title.toLowerCase().includes(filter.toLowerCase()))
         const visibleBooks = getVisibleNotes(books, current_filter);
 
-        console.log(visibleBooks)
         return (
             <div className="container">
                 <div className="search">
