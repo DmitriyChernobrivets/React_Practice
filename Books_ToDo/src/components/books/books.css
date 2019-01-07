@@ -1,0 +1,32 @@
+ul {
+    display: inline-block;
+    border: 1px solid grey;
+    width: 40%;
+}
+ul li {
+    position: relative;
+    border: 1px solid grey;
+    padding: 20px;
+    display: flex;
+}
+img {
+    height: 200px;
+    
+}
+.book {
+    display: flex;
+    flex-direction: column;
+
+}
+.delete {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    padding: 10px;
+    color: #fff;
+    background-color: rgb(71, 69, 69);
+    cursor: pointer;
+}
+.delete:hover {
+    background-color: rgb(107, 107, 107);
+}
