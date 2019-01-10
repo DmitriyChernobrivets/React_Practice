@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import Button from "./button";
-import Tab from "./tab";
+import React, { Component } from 'react';
+import Button from './button';
+import Tab from './tab';
 
 export default class Tabs extends Component {
   state = {
@@ -11,7 +11,13 @@ export default class Tabs extends Component {
       activeIndex: idx
     });
   };
+  shouldComponentUpdate(nextProp, nextState) {
+    console.log('this.state: ', this.props);
+    console.log('nextState: ', nextProp);
+    return true;
+  }
   render() {
+    console.log(`Render :${Date.now()} `);
     const { items } = this.props;
     const { activeIndex } = this.state;
 

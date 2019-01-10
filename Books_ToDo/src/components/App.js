@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import BookEditor from "./components/book_editor/book_editor";
-import Books from "./components/books/books";
-import defaultBooks from "./default_books.json";
+import BookEditor from "./book_editor/book_editor";
+import Books from "./books/books";
+import defaultBooks from "../default_books.json";
 import "./App.css";
 import uuid from "uuid/v4";
-import SearchBar from "./components/serach_bar/search";
+import SearchBar from "./serach_bar/search";
 
 export default class App extends Component {
   state = {

@@ -1,0 +1,51 @@
+{
+  // Place your global snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and
+  // description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope
+  // is left empty or omitted, the snippet gets applied to all languages. The prefix is what is
+  // used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+  // $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders.
+  // Placeholders with the same ids are connected.
+  // Example:
+  "Import React": {
+    "scope": "javascript,typescript",
+    "prefix": "react",
+    "body": ["import React, {Component} from 'react'"],
+    "description": "My Config"
+  },
+  "Import": {
+    "scope": "javascript,typescript",
+    "prefix": "import default",
+    "body": ["import ${1:label} from '${2:another}'"],
+    "description": "My Config"
+  },
+  "export def": {
+    "scope": "javascript,typescript",
+    "prefix": "export default",
+    "body": ["export default ${1:label}"],
+    "description": "My Config"
+  },
+  "func1": {
+    "scope": "javascript,typescript, jsx",
+    "prefix": "func1",
+    "body": ["function ${1:label}() {}"],
+    "description": "My Config"
+  },
+  "func2": {
+    "scope": "javascript,typescript",
+    "prefix": "func2",
+    "body": ["const ${1:label} = () => {}"],
+    "description": "My Config"
+  },
+  "then": {
+    "scope": "javascript,typescript",
+    "prefix": "then",
+    "body": ["then(response => {response})"],
+    "description": "My Config"
+  },
+  "catch": {
+    "scope": "javascript,typescript",
+    "prefix": "catch",
+    "body": ["catch(error => {error})"],
+    "description": "My Config"
+  }
+}

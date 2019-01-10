@@ -1,6 +1,6 @@
-import React from "react";
-import PropTypes from "prop-types";
-import Styles from "./button.css";
+import React from 'react';
+import PropTypes from 'prop-types';
+import Styles from './button.css';
 
 const Button = ({ label, type, active, onClick }) => {
   const btnActive = active ? Styles.active : Styles.Button;
@@ -20,7 +20,7 @@ Button.propTypes = {
 };
 
 Button.defaultProps = {
-  type: "button",
+  type: 'button',
   active: false,
   onClick: () => null
 };
