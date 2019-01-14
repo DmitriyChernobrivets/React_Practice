@@ -1,0 +1,13 @@
+.filmlist {
+  display: flex;
+  padding: 5px;
+  border: 1px solid black;
+  flex-wrap: wrap;
+  width: 70%;
+  margin: 0 auto;
+  justify-content: space-between;
+}
+.Card {
+  flex-basis: 22%;
+  border: 1px solid black;
+}
