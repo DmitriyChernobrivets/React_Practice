@@ -23,4 +23,11 @@ const fetchingMovieById = ({ id, onSuccess, onError }) => {
     .then(onSuccess)
     .catch(onError);
 };
-export { fetchingMovie, fetchingSearch, fetchingMovieById };
+const fetchingMovieMore = ({ selectedOption, page, onSuccess, onError }) => {
+  const url = `${BASE_URL}/movie/${selectedOption}?api_key=${API_KEY}&language=en-EN&page=${page}`;
+  return axios
+    .get(url)
+    .then(onSuccess)
+    .catch(onError);
+};
+export { fetchingMovie, fetchingSearch, fetchingMovieById, fetchingMovieMore };

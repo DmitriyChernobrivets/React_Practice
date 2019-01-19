@@ -2,11 +2,17 @@ import React, { Component } from "react";
 import styles from "./App.css";
 import Select from "react-select";
 import CardList from "./Cards/cardList";
-import { fetchingMovie, fetchingSearch } from "../services/api";
+import {
+  fetchingMovie,
+  fetchingSearch,
+  fetchingMovieMore
+} from "../services/api";
 import OPTIONS from "./options";
 import SearchPanel from "./Search/search_panel";
 import Search from "./Search/search";
 import ModalW from "./modal/modal";
+import Watchlist from "./WatchList/watchlist";
+import MainSection from "./Main.section/Main.section";
 
 export default class App extends Component {
   state = {
@@ -15,9 +21,18 @@ export default class App extends Component {
     error: null,
     inputValue: "",
     modalIsOpen: false,
-    movieId: null
+    movieId: null,
+    watchlist: []
   };
-
+  componentDidMount() {
+    this.getFromStorage();
+  }
+  getFromStorage = () => {
+    const storage = localStorage.getItem("watchlist");
+    this.setState({
+      watchlist: JSON.parse(storage)
+    });
+  };
   componentDidUpdate(prevProps, prevState) {
     const { selectedOption } = this.state;
     const prevCategory = prevState.selectedOption;
@@ -35,9 +50,14 @@ export default class App extends Component {
   onFetchSuccess = res => {
     this.setState({ cards: res.data.results });
   };
+  onFetchSuccessMore = res => {
+    this.setState(prev => ({
+      cards: prev.cards.concat(res.data.results)
+    }));
+  };
   onFetchError = error => this.setState({ error: error.message });
   changeCategory = selectedOption => {
-    this.setState({ selectedOption });
+    this.setState({ selectedOption, loading: true });
   };
   handleInput = evt => {
     const { inputValue } = this.state;
@@ -49,39 +69,96 @@ export default class App extends Component {
       onError: this.onFetchError
     });
   };
+  addToStorage = () => {
+    const { watchlist } = this.state;
+
+    localStorage.setItem("watchlist", JSON.stringify(watchlist));
+  };
+
+  AddToWatchlist = id => {
+    const { cards, watchlist } = this.state;
+    const selectedMovie = cards.find(movie => movie.id === id);
+    const isDuplicate = watchlist.find(movie => movie.id === id);
+
+    if (isDuplicate) return;
+
+    this.setState(
+      prev => ({
+        watchlist: [selectedMovie, ...prev.watchlist]
+      }),
+      () => this.addToStorage()
+    );
+  };
+  deleteWatchlist = id => {
+    const { watchlist } = this.state;
+    const removedList = watchlist.filter(film => film.id !== id);
+
+    this.setState(
+      {
+        watchlist: removedList
+      },
+      () => this.addToStorage()
+    );
+  };
   toggleModal = id => {
     this.setState(prevState => ({
       modalIsOpen: !prevState.modalIsOpen,
       movieId: id || null
     }));
   };
+  loadFunc = page => {
+    const { selectedOption } = this.state;
+    if (!selectedOption) return;
+
+    fetchingMovieMore({
+      selectedOption: selectedOption.value,
+      page: page + 1,
+      onSuccess: this.onFetchSuccessMore,
+      onError: this.onFetchError
+    });
+  };
   render() {
     const {
       selectedOption,
+      error,
       cards,
       inputValue,
       modalIsOpen,
-      movieId
+      movieId,
+      watchlist
     } = this.state;
 
     return (
       <div className={styles.App}>
-        <SearchPanel>
-          <Select
-            className={styles.select}
-            value={selectedOption}
-            onChange={this.changeCategory}
-            options={OPTIONS}
+        {error && <div>{error}</div>}
+        {watchlist && (
+          <Watchlist
+            cards={watchlist}
+            deleteWatchlist={this.deleteWatchlist}
+            toggleModal={this.toggleModal}
           />
-          <Search onSubmit={this.handleInput} />
-        </SearchPanel>
+        )}
+        <MainSection>
+          <SearchPanel>
+            <Select
+              className={styles.select}
+              value={selectedOption}
+              onChange={this.changeCategory}
+              options={OPTIONS}
+            />
+            <Search onSubmit={this.handleInput} />
+          </SearchPanel>
 
-        {selectedOption && (
-          <CardList films={cards} toggleModal={this.toggleModal} />
-        )}
-        {inputValue.length > 0 && (
-          <CardList films={cards} toggleModal={this.toggleModal} />
-        )}
+          {cards.length > 0 && (
+            <CardList
+              films={cards}
+              toggleModal={this.toggleModal}
+              AddToWatchlist={this.AddToWatchlist}
+              loadFunc={this.loadFunc}
+            />
+          )}
+        </MainSection>
+
         {modalIsOpen && (
           <ModalW
             modalIsOpen={modalIsOpen}

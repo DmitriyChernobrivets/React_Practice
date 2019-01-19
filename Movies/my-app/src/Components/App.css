@@ -1,6 +1,15 @@
 .App {
-  border: 1px solid black;
+  display: flex;
+  justify-content: space-around;
 }
 .select {
   width: 300px;
+}
+input {
+  border: none;
+}
+body {
+  padding: 30px 15px;
+}
+.main-section {
 }

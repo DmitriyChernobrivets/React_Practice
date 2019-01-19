@@ -1,0 +1,60 @@
+.watchlist {
+  width: 20%;
+  align-self: flex-start;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25), 0 1px 2px rgba(0, 0, 0, 0.22);
+}
+
+.head {
+  text-align: center;
+  margin-bottom: 15px;
+}
+.head:after {
+  display: block;
+  content: "";
+  width: 180px;
+  height: 3px;
+  background-color: black;
+  margin: 0 auto;
+}
+.watchlist_item {
+  padding: 5px;
+  height: 120px;
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25), 0 1px 2px rgba(0, 0, 0, 0.22);
+}
+.watchlist_item:not(:last-child) {
+  margin-bottom: 15px;
+}
+.content {
+  width: 75%;
+}
+.watchlist_item img {
+  width: 80px;
+  height: 100%;
+}
+.slideEnter {
+  opacity: 0;
+  transform: translateX(-100%);
+}
+
+.slideEnterActive {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 200ms ease-out, transform 200ms linear;
+}
+
+.slideExitActive {
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: opacity 200ms ease-out, transform 200ms linear;
+}
+.info_svg {
+  width: 25px;
+  height: 27px;
+  fill: #161616;
+  border: 2px solid black;
+  border-radius: 50%;
+}
