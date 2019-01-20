@@ -2,6 +2,7 @@ import React from "react";
 import WatchlistCard from "./watchlistCard";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import styles from "./watchlist.css";
+import PropTypes from "prop-types";
 
 const Watchlist = ({ cards, deleteWatchlist, toggleModal }) => (
   <div className={styles.watchlist}>
@@ -17,6 +18,7 @@ const Watchlist = ({ cards, deleteWatchlist, toggleModal }) => (
             exit: styles.slideExit,
             exitActive: styles.slideExitActive
           }}
+          mountOnEnter
           unmountOnExit
         >
           <WatchlistCard
@@ -31,4 +33,9 @@ const Watchlist = ({ cards, deleteWatchlist, toggleModal }) => (
   </div>
 );
 
+Watchlist.propTypes = {
+  cards: PropTypes.array.isRequired,
+  deleteWatchlist: PropTypes.func,
+  toggleModal: PropTypes.func
+};
 export default Watchlist;

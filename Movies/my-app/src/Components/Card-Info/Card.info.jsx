@@ -4,6 +4,8 @@ import uuid from "uuid/v4";
 import timeConvert from "../../services/timeConverter";
 import Icon from "../SVG/svg";
 import icons from "../SVG/icon";
+import PropTypes from "prop-types";
+
 const CardInfo = ({
   poster_path,
   original_title,
@@ -49,4 +51,12 @@ const CardInfo = ({
   );
 };
 
+CardInfo.propTypes = {
+  poster_path: PropTypes.string.isRequired,
+  original_title: PropTypes.string.isRequired,
+  tagline: PropTypes.string.isRequired,
+  runtime: PropTypes.string.isRequired,
+  production_countries: PropTypes.array.isRequired,
+  toggle: PropTypes.func.isRequired
+};
 export default CardInfo;

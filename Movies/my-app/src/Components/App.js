@@ -1,13 +1,12 @@
 import React, { Component } from "react";
 import styles from "./App.css";
-import Select from "react-select";
+import SearchSelect from "./Search/select";
 import CardList from "./Cards/cardList";
 import {
   fetchingMovie,
   fetchingSearch,
   fetchingMovieMore
 } from "../services/api";
-import OPTIONS from "./options";
 import SearchPanel from "./Search/search_panel";
 import Search from "./Search/search";
 import ModalW from "./modal/modal";
@@ -59,10 +58,11 @@ export default class App extends Component {
   changeCategory = selectedOption => {
     this.setState({ selectedOption, loading: true });
   };
-  handleInput = evt => {
-    const { inputValue } = this.state;
-
+  handleInputChange = evt => {
     this.setState({ inputValue: evt.target.value });
+  };
+  handleSearch = () => {
+    const { inputValue } = this.state;
     fetchingSearch({
       inputValue,
       onSuccess: this.onFetchSuccess,
@@ -122,7 +122,6 @@ export default class App extends Component {
       selectedOption,
       error,
       cards,
-      inputValue,
       modalIsOpen,
       movieId,
       watchlist
@@ -140,13 +139,15 @@ export default class App extends Component {
         )}
         <MainSection>
           <SearchPanel>
-            <Select
-              className={styles.select}
-              value={selectedOption}
-              onChange={this.changeCategory}
-              options={OPTIONS}
+            <SearchSelect
+              selectedOption={selectedOption}
+              changeCategory={this.changeCategory}
             />
-            <Search onSubmit={this.handleInput} />
+
+            <Search
+              handleInputChange={this.handleInputChange}
+              handleSearch={this.handleSearch}
+            />
           </SearchPanel>
 
           {cards.length > 0 && (

@@ -1,10 +1,18 @@
-/* .modal {
-  position: absolute;
-  width: 100px;
-  height: 100px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: grey;
-  padding: 15px;
-} */
+.transitionEnter {
+  opacity: 0;
+}
+.transitionEnterActive {
+  opacity: 1;
+  transition: opacity 300ms ease;
+}
+.transitionExit {
+  opacity: 1;
+}
+.transitionExitActive {
+  opacity: 0;
+  transition: opacity 300ms ease;
+}
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+}

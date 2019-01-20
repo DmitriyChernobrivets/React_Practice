@@ -9,12 +9,15 @@
   position: relative;
   cursor: pointer;
   border: 1px solid grey;
-  padding: 5px;
+  padding: 5px 5px 10px 5px;
   margin-bottom: 20px;
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25), 0 1px 2px rgba(0, 0, 0, 0.22);
 }
 .Card::nth-last-child(-n + 4) {
   margin-bottom: 0;
+}
+.loader {
+  margin: auto;
 }
 .CardPanel {
   width: 100px;
@@ -45,15 +48,7 @@
   width: 36px;
   height: 37px;
 }
-.icon_info,
-.icon_add {
-  width: 25px;
-  height: 27px;
-  fill: #161616;
-}
-.icon_info {
-  width: 29px;
-}
+
 .icon_info:hover,
 .icon_add:hover {
   fill: #686767;
@@ -71,4 +66,12 @@
 .title {
   padding: 10px 0 5px 0;
   text-align: center;
+}
+.cardEnter {
+  opacity: 0;
+}
+.cardEnterActive {
+  opacity: 1;
+
+  transition: opacity ease-out;
 }

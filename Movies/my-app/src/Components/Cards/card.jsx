@@ -1,6 +1,7 @@
 import React from "react";
 import style from "./card.css";
-import { CardPanel } from "./card_panel";
+import CardPanel from "./card_panel";
+import PropTypes from "prop-types";
 
 const Card = ({
   id,
@@ -12,10 +13,8 @@ const Card = ({
   toggleModal,
   AddToWatchlist
 }) => {
-  const substring = string => {
-    const str = string.substr(60);
-    return string.replace(new RegExp(str), "...");
-  };
+  const substring = string => string.slice(0, 80) + "...";
+
   return (
     <li className={style.Card}>
       <CardPanel
@@ -35,5 +34,14 @@ const Card = ({
       <p>{substring(overview)}</p>
     </li>
   );
+};
+Card.propTypes = {
+  vote_average: PropTypes.number.isRequired,
+  overview: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  release_date: PropTypes.string.isRequired,
+  poster_path: PropTypes.string.isRequired,
+  AddToWatchlist: PropTypes.func.isRequired,
+  toggleModal: PropTypes.func.isRequired
 };
 export default Card;

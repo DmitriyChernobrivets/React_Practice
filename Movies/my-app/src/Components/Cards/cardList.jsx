@@ -1,9 +1,10 @@
 import React from "react";
 import Card from "./card";
-import style from "./card.css";
+import styles from "./card.css";
 import InfiniteScroll from "react-infinite-scroller";
 import PreloaderIcon from "react-preloader-icon";
 import Oval from "react-preloader-icon/loaders/Oval";
+import PropTypes from "prop-types";
 
 const CardList = ({ films, toggleModal, AddToWatchlist, loadFunc }) => (
   <InfiniteScroll
@@ -11,8 +12,9 @@ const CardList = ({ films, toggleModal, AddToWatchlist, loadFunc }) => (
     loadMore={loadFunc}
     hasMore
     loader={
-      <div className="loader" key={0}>
+      <div key={0}>
         <PreloaderIcon
+          className={styles.loader}
           loader={Oval}
           size={52}
           strokeWidth={12}
@@ -22,7 +24,7 @@ const CardList = ({ films, toggleModal, AddToWatchlist, loadFunc }) => (
       </div>
     }
   >
-    <ul className={style.filmlist}>
+    <ul className={styles.filmlist}>
       {films.map(film => (
         <Card
           {...film}
@@ -35,4 +37,10 @@ const CardList = ({ films, toggleModal, AddToWatchlist, loadFunc }) => (
   </InfiniteScroll>
 );
 
+CardList.propTypes = {
+  films: PropTypes.array.isRequired,
+  AddToWatchlist: PropTypes.func,
+  toggleModal: PropTypes.func,
+  loadFunc: PropTypes.func
+};
 export default CardList;
