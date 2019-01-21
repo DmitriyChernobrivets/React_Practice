@@ -12,6 +12,8 @@ const Search = ({ handleInputChange, handleSearch }) => (
       type="text"
       placeholder="Search"
       onChange={handleInputChange}
+      onSubmit={handleSearch}
+      autoComplete="true"
     />
     <button onClick={handleSearch}>
       <Icon icon={icons.SEARCH} />

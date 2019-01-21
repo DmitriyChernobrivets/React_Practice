@@ -5,6 +5,7 @@ import InfiniteScroll from "react-infinite-scroller";
 import PreloaderIcon from "react-preloader-icon";
 import Oval from "react-preloader-icon/loaders/Oval";
 import PropTypes from "prop-types";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 const CardList = ({ films, toggleModal, AddToWatchlist, loadFunc }) => (
   <InfiniteScroll
@@ -24,16 +25,25 @@ const CardList = ({ films, toggleModal, AddToWatchlist, loadFunc }) => (
       </div>
     }
   >
-    <ul className={styles.filmlist}>
+    <TransitionGroup component="ul" className={styles.filmlist}>
       {films.map(film => (
-        <Card
-          {...film}
+        <CSSTransition
+          timeout={500}
           key={film.id}
-          toggleModal={toggleModal}
-          AddToWatchlist={AddToWatchlist}
-        />
+          classNames={{
+            enter: styles.slideEnter,
+            enterActive: styles.slideEnterActive
+          }}
+        >
+          <Card
+            {...film}
+            key={film.id}
+            toggleModal={toggleModal}
+            AddToWatchlist={AddToWatchlist}
+          />
+        </CSSTransition>
       ))}
-    </ul>
+    </TransitionGroup>
   </InfiniteScroll>
 );
 

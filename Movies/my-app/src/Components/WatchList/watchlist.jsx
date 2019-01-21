@@ -18,7 +18,7 @@ const Watchlist = ({ cards, deleteWatchlist, toggleModal }) => (
             exit: styles.slideExit,
             exitActive: styles.slideExitActive
           }}
-          mountOnEnter
+          // mountOnEnter
           unmountOnExit
         >
           <WatchlistCard
