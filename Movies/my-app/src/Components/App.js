@@ -12,17 +12,18 @@ import Search from "./Search/search";
 import ModalW from "./modal/modal";
 import Watchlist from "./WatchList/watchlist";
 import MainSection from "./Main.section/Main.section";
+import { connect } from "react-redux";
 
-export default class App extends Component {
-  state = {
-    selectedOption: null,
-    cards: [],
-    error: null,
-    inputValue: "",
-    modalIsOpen: false,
-    movieId: null,
-    watchlist: []
-  };
+class App extends Component {
+  // state = {
+  //   // selectedOption: null,
+  //   cards: [],
+  //   error: null,
+  //   inputValue: "",
+  //   modalIsOpen: false,
+  //   movieId: null,
+  //   watchlist: []
+  // };
   componentDidMount() {
     this.getFromStorage();
   }
@@ -33,17 +34,15 @@ export default class App extends Component {
     });
   };
   componentDidUpdate(prevProps, prevState) {
-    const { selectedOption } = this.state;
-    const prevCategory = prevState.selectedOption;
-    const nextCategory = selectedOption;
-
-    if (prevCategory !== nextCategory) {
-      fetchingMovie({
-        selectedOption: nextCategory.value,
-        onSuccess: this.onFetchSuccess,
-        onError: this.onFetchError
-      });
-    }
+    //   const prevCategory = prevState.selectedOption;
+    //   const nextCategory = selectedOption;
+    //   if (prevCategory !== nextCategory) {
+    //     fetchingMovie({
+    //       selectedOption: nextCategory.value,
+    //       onSuccess: this.onFetchSuccess,
+    //       onError: this.onFetchError
+    //     });
+    //   }
   }
 
   onFetchSuccess = res => {
@@ -107,67 +106,69 @@ export default class App extends Component {
     }));
   };
   loadFunc = page => {
-    const { selectedOption } = this.state;
-    if (!selectedOption) return;
-
-    fetchingMovieMore({
-      selectedOption: selectedOption.value,
-      page: page + 1,
-      onSuccess: this.onFetchSuccessMore,
-      onError: this.onFetchError
-    });
+    // const { selectedOption } = this.state;
+    // if (!selectedOption) return;
+    // fetchingMovieMore({
+    //   selectedOption: selectedOption.value,
+    //   page: page + 1,
+    //   onSuccess: this.onFetchSuccessMore,
+    //   onError: this.onFetchError
+    // });
   };
   render() {
     const {
-      selectedOption,
-      error,
-      cards,
-      modalIsOpen,
-      movieId,
-      watchlist
-    } = this.state;
-
+      val
+      // error,
+      // cards,
+      // modalIsOpen,
+      // movieId,
+      // watchlist
+    } = this.props;
+    console.log(this.props);
     return (
       <div className={styles.App}>
-        {error && <div>{error}</div>}
+        {/* {error && <div>{error}</div>}
         {watchlist && (
           <Watchlist
             cards={watchlist}
             deleteWatchlist={this.deleteWatchlist}
             toggleModal={this.toggleModal}
           />
-        )}
+        )} */}
+        {/* {selectedOption && <div>XAXAXA</div>} */}
         <MainSection>
           <SearchPanel>
-            <SearchSelect
-              selectedOption={selectedOption}
-              changeCategory={this.changeCategory}
-            />
+            <SearchSelect />
 
-            <Search
+            {/* <Search
               handleInputChange={this.handleInputChange}
               handleSearch={this.handleSearch}
-            />
+            /> */}
           </SearchPanel>
 
-          {cards.length > 0 && (
+          {/* {cards.length > 0 && (
             <CardList
               films={cards}
               toggleModal={this.toggleModal}
               AddToWatchlist={this.AddToWatchlist}
               loadFunc={this.loadFunc}
             />
-          )}
+          )} */}
         </MainSection>
 
-        {modalIsOpen && (
+        {/* {modalIsOpen && (
           <ModalW
             modalIsOpen={modalIsOpen}
             toggle={this.toggleModal}
             movieId={movieId}
           />
-        )}
+        )} */}
       </div>
     );
   }
 }
+const stateToProps = state => ({
+  val: state.currentSelect
+});
+
+export default connect(stateToProps)(App);

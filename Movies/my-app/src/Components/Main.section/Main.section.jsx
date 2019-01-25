@@ -6,8 +6,8 @@ const MainSection = ({ children }) => (
   <section className={style.main}>{children}</section>
 );
 
-MainSection.propTypes = {
-  children: PropTypes.oneOfType([PropTypes.array, PropTypes.bool])
-};
+// MainSection.propTypes = {
+//   children: PropTypes.oneOfType([PropTypes.array, PropTypes.bool])
+// };
 
 export default MainSection;

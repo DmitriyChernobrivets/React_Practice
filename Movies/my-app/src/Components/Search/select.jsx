@@ -3,6 +3,8 @@ import Select from "react-select";
 import styles from "./search.css";
 import OPTIONS from "../options";
 import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { SelectAction } from "../../store/actions/select";
 
 const SearchSelect = ({ selectedOption, changeCategory }) => (
   <div>
@@ -17,7 +19,16 @@ const SearchSelect = ({ selectedOption, changeCategory }) => (
 );
 
 SearchSelect.propTypes = {
-  selectedOption: PropTypes.func,
+  // selectedOption: PropTypes.func,
   changeCategory: PropTypes.func
 };
-export default SearchSelect;
+const mapStateToProps = state => ({
+  selectedOption: state.currentSelect
+});
+const mapDispatchToProps = dispatch => ({
+  changeCategory: val => dispatch(SelectAction(val))
+});
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SearchSelect);
