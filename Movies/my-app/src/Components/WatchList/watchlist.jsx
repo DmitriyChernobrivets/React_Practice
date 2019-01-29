@@ -3,8 +3,9 @@ import WatchlistCard from "./watchlistCard";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import styles from "./watchlist.css";
 import PropTypes from "prop-types";
+import { connect } from "react-redux";
 
-const Watchlist = ({ cards, deleteWatchlist, toggleModal }) => (
+const Watchlist = ({ cards, toggleModal }) => (
   <div className={styles.watchlist}>
     <h2 className={styles.head}>WatchList</h2>
     <TransitionGroup component="ul">
@@ -21,12 +22,7 @@ const Watchlist = ({ cards, deleteWatchlist, toggleModal }) => (
           // mountOnEnter
           unmountOnExit
         >
-          <WatchlistCard
-            key={card.id}
-            card={card}
-            deleteWatchlist={deleteWatchlist}
-            toggleModal={toggleModal}
-          />
+          <WatchlistCard key={card.id} {...card} toggleModal={toggleModal} />
         </CSSTransition>
       ))}
     </TransitionGroup>
@@ -38,4 +34,7 @@ Watchlist.propTypes = {
   deleteWatchlist: PropTypes.func,
   toggleModal: PropTypes.func
 };
+// const mapStateToProps = state => ({
+//   ...state.watchlist
+// });
 export default Watchlist;

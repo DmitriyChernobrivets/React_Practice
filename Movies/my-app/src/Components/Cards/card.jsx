@@ -1,6 +1,6 @@
 import React from "react";
 import style from "./card.css";
-import CardPanel from "./card_panel";
+import CardPanel from "../card.control/controlPanel/card.panel";
 import PropTypes from "prop-types";
 
 const Card = ({
@@ -9,19 +9,13 @@ const Card = ({
   release_date,
   poster_path,
   overview,
-  vote_average,
-  toggleModal,
-  AddToWatchlist
+  vote_average
 }) => {
   const substring = string => string.slice(0, 80) + "...";
 
   return (
     <li className={style.Card}>
-      <CardPanel
-        id={id}
-        toggleModal={toggleModal}
-        AddToWatchlist={AddToWatchlist}
-      />
+      <CardPanel id={id} />
       <img
         src={`https://image.tmdb.org/t/p/w300/${poster_path}`}
         alt="fim-img"

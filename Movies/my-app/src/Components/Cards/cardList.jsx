@@ -12,18 +12,18 @@ const CardList = ({ films, toggleModal, AddToWatchlist, loadFunc }) => (
     pageStart={0}
     loadMore={loadFunc}
     hasMore
-    loader={
-      <div key={0}>
-        <PreloaderIcon
-          className={styles.loader}
-          loader={Oval}
-          size={52}
-          strokeWidth={12}
-          strokeColor="#c62828"
-          duration={800}
-        />
-      </div>
-    }
+    // loader={
+    //   <div key={0}>
+    //     <PreloaderIcon
+    //       className={styles.loader}
+    //       loader={Oval}
+    //       size={52}
+    //       strokeWidth={12}
+    //       strokeColor="#c62828"
+    //       duration={800}
+    //     />
+    //   </div>
+    // }
   >
     <TransitionGroup component="ul" className={styles.filmlist}>
       {films.map(film => (

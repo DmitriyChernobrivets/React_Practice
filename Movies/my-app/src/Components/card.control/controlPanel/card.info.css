@@ -1,8 +1,11 @@
 .movie-info {
-  min-height: 400px;
+  min-height: 450px;
   width: 700px;
   display: flex;
   justify-content: space-between;
+}
+.movie-info img {
+  flex-basis: 40%;
 }
 .info_content {
   position: relative;

@@ -3,9 +3,19 @@ import style from "./watchlist.css";
 import Icon from "../SVG/svg";
 import icons from "../SVG/icon";
 import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { removeWatchlist } from "../../store/actions/actions";
 
-const WatchlistCard = ({ card, deleteWatchlist, toggleModal }) => {
-  const { id, poster_path, title, release_date } = card;
+const WatchlistCard = ({
+  id,
+  poster_path,
+  title,
+  release_date,
+  deleteWatchlist,
+  toggleModal
+}) => {
+  // const {  } = this.props;
+  console.log(id);
   return (
     <li className={style.watchlist_item}>
       <a href="#">
@@ -32,4 +42,11 @@ WatchlistCard.propTypes = {
   deleteWatchlist: PropTypes.func,
   toggleModal: PropTypes.func
 };
-export default WatchlistCard;
+
+const mapdispatchToProps = dispatch => ({
+  deleteWatchlist: id => dispatch(removeWatchlist(id))
+});
+export default connect(
+  null,
+  mapdispatchToProps
+)(WatchlistCard);

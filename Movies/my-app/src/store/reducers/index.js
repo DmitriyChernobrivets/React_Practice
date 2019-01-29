@@ -1,4 +1,8 @@
 import { combineReducers } from "redux";
-import { selectReducer } from "./select";
+import moviesReducer from "./movies";
+import watchlistReducer from "./watchlist";
 
-export const rootReducer = combineReducers({ currentSelect: selectReducer });
+export const rootReducer = combineReducers({
+  movie: moviesReducer,
+  watchlist: watchlistReducer
+});
