@@ -18,9 +18,9 @@ const WatchlistCard = ({
   console.log(id);
   return (
     <li className={style.watchlist_item}>
-      <a href="#">
+      <div>
         <img src={`https://image.tmdb.org/t/p/w200/${poster_path}`} alt="img" />
-      </a>
+      </div>
       <div className={style.content}>
         <h3>{title}</h3>
         <p>Realeased: {release_date}</p>

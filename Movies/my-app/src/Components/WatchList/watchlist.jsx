@@ -3,7 +3,7 @@ import WatchlistCard from "./watchlistCard";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import styles from "./watchlist.css";
 import PropTypes from "prop-types";
-import { connect } from "react-redux";
+// import { connect } from "react-redux";
 
 const Watchlist = ({ cards, toggleModal }) => (
   <div className={styles.watchlist}>

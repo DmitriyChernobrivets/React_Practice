@@ -11,7 +11,7 @@ const Card = ({
   overview,
   vote_average
 }) => {
-  const substring = string => string.slice(0, 80) + "...";
+  // const substring = string => string.slice(0, 80) + "...";
 
   return (
     <li className={style.Card}>
@@ -20,12 +20,12 @@ const Card = ({
         src={`https://image.tmdb.org/t/p/w300/${poster_path}`}
         alt="fim-img"
       />
-      <h3 className={style.title}>{`${title} (${release_date.slice(
+      {/* <h3 className={style.title}>{`${title} (${release_date.slice(
         0,
         4
-      )})`}</h3>
+      )})`}</h3> */}
       <div className={style.vote}>{vote_average}</div>
-      <p>{substring(overview)}</p>
+      {/* <p>{substring(overview)}</p> */}
     </li>
   );
 };

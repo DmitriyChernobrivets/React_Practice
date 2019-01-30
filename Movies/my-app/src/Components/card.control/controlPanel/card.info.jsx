@@ -2,34 +2,16 @@ import React, { Component } from "react";
 import styles from "./card.info.css";
 import uuid from "uuid/v4";
 import timeConvert from "../../../services/timeConverter";
-import Icon from "../../SVG/svg";
-import icons from "../../SVG/icon";
-import PropTypes from "prop-types";
-import Modal from "react-responsive-modal";
-import { fetchingMovieById } from "../../../services/api";
+// import Icon from "../../SVG/svg";
+// import icons from "../../SVG/icon";
+// import PropTypes from "prop-types";
+// import Modal from "react-responsive-modal";
+// import { fetchingMovieById } from "../../../services/api";
 
 class CardInfo extends Component {
-  state = {
-    selectedMovie: null,
-    error: null
-  };
-  componentDidMount() {
-    const { id } = this.props;
-    fetchingMovieById({ id, onSuccess: this.onSuccess, onError: this.onError });
-  }
-  onSuccess = movie => {
-    this.setState({
-      selectedMovie: movie.data
-    });
-  };
-  onError = errorResponse => {
-    this.setState({
-      error: errorResponse
-    });
-  };
   render() {
     const { selectedMovie } = this.state;
-    const { toggle } = this.props;
+    console.log("xaxa");
     return (
       <div>
         {selectedMovie && (
@@ -65,9 +47,6 @@ class CardInfo extends Component {
               <p>{`${selectedMovie.runtime} min. / ${timeConvert(
                 selectedMovie.runtime
               )}`}</p>
-              <button onClick={toggle}>
-                <Icon icon={icons.CLOSE} className={styles.info_svg} />
-              </button>
             </div>
           </div>
         )}

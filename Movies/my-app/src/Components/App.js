@@ -2,11 +2,11 @@ import React, { Component } from "react";
 import styles from "./App.css";
 import SearchSelect from "./Search/select";
 import CardList from "./Cards/cardList";
-import {
-  fetchingMovie,
-  fetchingSearch,
-  fetchingMovieMore
-} from "../services/api";
+// import {
+//   fetchingMovie,
+//   fetchingSearch,
+//   fetchingMovieMore
+// } from "../services/api";
 import SearchPanel from "./Search/search_panel";
 import Search from "./Search/search";
 // import ModalW from "./modal/modal";
@@ -24,11 +24,7 @@ class App extends Component {
         <MainSection>
           <SearchPanel>
             <SearchSelect />
-
-            <Search
-              handleInputChange={this.handleInputChange}
-              handleSearch={this.handleSearch}
-            />
+            <Search />
           </SearchPanel>
 
           {movies && <CardList films={movies} />}
