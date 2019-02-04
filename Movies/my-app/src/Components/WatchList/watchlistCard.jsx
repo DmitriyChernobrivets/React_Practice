@@ -14,8 +14,6 @@ const WatchlistCard = ({
   deleteWatchlist,
   toggleModal
 }) => {
-  // const {  } = this.props;
-  console.log(id);
   return (
     <li className={style.watchlist_item}>
       <div>

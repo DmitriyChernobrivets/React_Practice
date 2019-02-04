@@ -29,10 +29,10 @@ const Search = ({ handleInputChange, handleSearch, value }) => {
   );
 };
 
-Search.propTypes = {
-  handleInputChange: PropTypes.func,
-  handleSearch: PropTypes.func
-};
+// Search.propTypes = {
+//   handleInputChange: PropTypes.func,
+//   handleSearch: PropTypes.func
+// };
 
 const stateToProps = state => ({
   value: state.movie.currentSearchInput

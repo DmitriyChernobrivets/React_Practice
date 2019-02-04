@@ -4,7 +4,7 @@ import styles from "./card.css";
 import InfiniteScroll from "react-infinite-scroller";
 import PreloaderIcon from "react-preloader-icon";
 import Oval from "react-preloader-icon/loaders/Oval";
-// import PropTypes from "prop-types";
+
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import { connect } from "react-redux";
 import { fetchMoviesMore } from "../../store/actions/actions";

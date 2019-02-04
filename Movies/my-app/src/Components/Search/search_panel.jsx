@@ -6,7 +6,7 @@ const SearchPanel = ({ children }) => (
   <div className={style.searchPanel}>{children}</div>
 );
 
-SearchPanel.propTypes = {
-  children: PropTypes.arrayOf(PropTypes.element.isRequired)
-};
+// SearchPanel.propTypes = {
+//   children: PropTypes.arrayOf(PropTypes.element.isRequired)
+// };
 export default SearchPanel;

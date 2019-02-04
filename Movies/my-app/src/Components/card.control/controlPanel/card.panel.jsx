@@ -47,11 +47,11 @@ class CardPanel extends Component {
   }
 }
 
-CardPanel.propTypes = {
-  id: PropTypes.number.isRequired,
-  toggleModal: PropTypes.func,
-  AddToWatchlist: PropTypes.func
-};
+// CardPanel.propTypes = {
+//   id: PropTypes.number.isRequired,
+//   toggleModal: PropTypes.func,
+//   AddToWatchlist: PropTypes.func
+// };
 const mapStateToProps = state => ({
   watchlistmovie: state.movie.movies
 });

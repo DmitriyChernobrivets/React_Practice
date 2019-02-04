@@ -24,6 +24,7 @@ SearchSelect.propTypes = {
 const mapDispatchToProps = dispatch => ({
   changeCategory: ({ value }) => dispatch(fetchMovies(value))
 });
+
 export default connect(
   null,
 

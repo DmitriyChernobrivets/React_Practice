@@ -29,13 +29,13 @@ const Card = ({
     </li>
   );
 };
-Card.propTypes = {
-  vote_average: PropTypes.number.isRequired,
-  overview: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  release_date: PropTypes.string.isRequired,
-  poster_path: PropTypes.string.isRequired,
-  AddToWatchlist: PropTypes.func.isRequired,
-  toggleModal: PropTypes.func.isRequired
-};
+// Card.propTypes = {
+//   vote_average: PropTypes.number.isRequired,
+//   overview: PropTypes.string.isRequired,
+//   title: PropTypes.string.isRequired,
+//   release_date: PropTypes.string.isRequired,
+//   poster_path: PropTypes.string.isRequired,
+//   AddToWatchlist: PropTypes.func.isRequired,
+//   toggleModal: PropTypes.func.isRequired
+// };
 export default Card;
