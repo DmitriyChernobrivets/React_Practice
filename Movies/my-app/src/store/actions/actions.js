@@ -32,30 +32,23 @@ const getMoreMovies = movies => ({
   type: "GET_MORE_MOVIES",
   payload: movies
 });
-const currentCategory = query => ({
-  type: "CURRENT_CATEGORY",
-  payload: query
-});
+
 const searchValue = value => ({
   type: "CURRENT_SEARCH_VALUE",
   payload: value
 });
 
-const fetchMovies = query => dispatch => {
+const fetchMovies = () => dispatch => {
   dispatch(fetchMoviesStart());
-  fetchingMovie(query)
-    .then(movies => {
-      dispatch(onFetchSuccess(movies));
-      return movies;
-    })
-    .then(() => dispatch(currentCategory(query)))
+  fetchingMovie()
+    .then(movies => dispatch(onFetchSuccess(movies)))
     .catch(error => dispatch(onFetchError(error)));
 };
 
-const fetchMoviesMore = (pageNum, query) => dispatch => {
-  if (!query) return;
+const fetchMoviesMore = pageNum => dispatch => {
+  console.log(pageNum);
   dispatch(fetchMoviesStart());
-  fetchingMovieMore(pageNum, query)
+  fetchingMovieMore(pageNum)
     .then(movies => dispatch(getMoreMovies(movies)))
     .catch(error => dispatch(onFetchError(error)));
 };

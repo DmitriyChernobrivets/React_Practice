@@ -26,8 +26,12 @@ img {
 button {
   background-color: transparent;
   border: none;
+}
+svg,
+button {
   cursor: pointer;
 }
-svg {
-  cursor: pointer;
+a {
+  text-decoration: none;
+  color: #000;
 }

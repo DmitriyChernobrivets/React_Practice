@@ -1,13 +1,13 @@
 import React from "react";
 import style from "./search.css";
-import Icon from "../SVG/svg";
-import icons from "../SVG/icon";
-import PropTypes from "prop-types";
+import Icon from "@svg/svg";
+import icons from "@svg/icon";
+// import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import {
   fetchMoviesSearchInput,
   searchValue
-} from "../../store/actions/actions";
+} from "../../../../store/actions/actions";
 
 const Search = ({ handleInputChange, handleSearch, value }) => {
   const search = () => handleSearch(value);

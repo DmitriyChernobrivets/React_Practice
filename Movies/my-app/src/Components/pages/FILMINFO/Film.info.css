@@ -3,6 +3,10 @@
   width: 700px;
   display: flex;
   justify-content: space-between;
+  margin: 0 auto;
+}
+.loader {
+  margin: 40% auto;
 }
 .movie-info img {
   flex-basis: 40%;

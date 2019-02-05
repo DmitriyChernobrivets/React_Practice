@@ -12,14 +12,6 @@ const movies = (state = [], { type, payload }) => {
   }
 };
 
-const currentCategory = (state = "", { type, payload }) => {
-  switch (type) {
-    case "CURRENT_CATEGORY":
-      return payload;
-    default:
-      return state;
-  }
-};
 const currentSearchInput = (state = "", { type, payload }) => {
   switch (type) {
     case "CURRENT_SEARCH_VALUE":
@@ -52,7 +44,6 @@ const moviesReducer = combineReducers({
   movies,
   loading,
   error,
-  currentCategory,
   currentSearchInput
 });
 export default moviesReducer;

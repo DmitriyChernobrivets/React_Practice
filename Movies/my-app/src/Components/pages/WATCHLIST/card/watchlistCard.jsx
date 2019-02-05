@@ -1,18 +1,17 @@
 import React from "react";
 import style from "./watchlist.css";
-import Icon from "../SVG/svg";
-import icons from "../SVG/icon";
+import Icon from "@svg//svg";
+import icons from "@svg//icon";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { removeWatchlist } from "../../store/actions/actions";
+import { removeWatchlist } from "../../../../store/actions/actions";
 
 const WatchlistCard = ({
   id,
   poster_path,
   title,
   release_date,
-  deleteWatchlist,
-  toggleModal
+  deleteWatchlist
 }) => {
   return (
     <li className={style.watchlist_item}>
@@ -23,7 +22,7 @@ const WatchlistCard = ({
         <h3>{title}</h3>
         <p>Realeased: {release_date}</p>
         <div className={style.watchlist_controllPanel}>
-          <button onClick={() => toggleModal(id)}>
+          <button>
             <Icon icon={icons.INFO} className={style.info_svg} />
           </button>
           <button onClick={() => deleteWatchlist(id)}>

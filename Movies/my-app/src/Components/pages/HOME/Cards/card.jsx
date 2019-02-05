@@ -1,32 +1,24 @@
-import React from "react";
+import React, { Fragment } from "react";
 import style from "./card.css";
-import CardPanel from "../card.control/controlPanel/card.panel";
+
 import PropTypes from "prop-types";
 
-const Card = ({
-  id,
-  title,
-  release_date,
-  poster_path,
-  overview,
-  vote_average
-}) => {
-  // const substring = string => string.slice(0, 80) + "...";
+const Card = ({ title, release_date, poster_path, overview, vote_average }) => {
+  const substring = string => string.slice(0, 80) + "...";
 
   return (
-    <li className={style.Card}>
-      <CardPanel id={id} />
+    <Fragment>
       <img
         src={`https://image.tmdb.org/t/p/w300/${poster_path}`}
         alt="fim-img"
       />
-      {/* <h3 className={style.title}>{`${title} (${release_date.slice(
+      <h3 className={style.title}>{`${title} (${release_date.slice(
         0,
         4
-      )})`}</h3> */}
+      )})`}</h3>
       <div className={style.vote}>{vote_average}</div>
-      {/* <p>{substring(overview)}</p> */}
-    </li>
+      <p className={style.discription}>{substring(overview)}</p>
+    </Fragment>
   );
 };
 // Card.propTypes = {

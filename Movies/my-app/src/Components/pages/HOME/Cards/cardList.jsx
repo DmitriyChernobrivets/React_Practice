@@ -4,44 +4,32 @@ import styles from "./card.css";
 import InfiniteScroll from "react-infinite-scroller";
 import PreloaderIcon from "react-preloader-icon";
 import Oval from "react-preloader-icon/loaders/Oval";
-
+import { Link } from "react-router-dom";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import { connect } from "react-redux";
-import { fetchMoviesMore } from "../../store/actions/actions";
+import { fetchMoviesMore } from "../../../../store/actions/actions";
 
-const CardList = ({
-  films,
-  toggleModal,
-  AddToWatchlist,
-  category,
-  fetchMoviesMorese
-}) => {
-  const requestMore = page => {
-    fetchMoviesMorese(page, category);
-  };
-
+const CardList = ({ movies, getMore }) => {
   return (
     <InfiniteScroll
       pageStart={0}
-      loadMore={requestMore}
+      loadMore={getMore}
       hasMore
       loader={
-        category && (
-          <div key={0}>
-            <PreloaderIcon
-              className={styles.loader}
-              loader={Oval}
-              size={52}
-              strokeWidth={12}
-              strokeColor="#c62828"
-              duration={800}
-            />
-          </div>
-        )
+        <div key={0}>
+          <PreloaderIcon
+            className={styles.loader}
+            loader={Oval}
+            size={52}
+            strokeWidth={8}
+            strokeColor="#42A5F5"
+            duration={800}
+          />
+        </div>
       }
     >
       <TransitionGroup component="ul" className={styles.filmlist}>
-        {films.map(film => (
+        {movies.map(film => (
           <CSSTransition
             timeout={500}
             key={film.id}
@@ -50,12 +38,9 @@ const CardList = ({
               enterActive: styles.slideEnterActive
             }}
           >
-            <Card
-              {...film}
-              key={film.id}
-              toggleModal={toggleModal}
-              AddToWatchlist={AddToWatchlist}
-            />
+            <Link to={`/${film.id}`} className={styles.Card}>
+              <Card {...film} key={film.id} />
+            </Link>
           </CSSTransition>
         ))}
       </TransitionGroup>
@@ -69,16 +54,12 @@ const CardList = ({
 //   toggleModal: PropTypes.func,
 //   loadFunc: PropTypes.func
 // };
-const mapStateToProps = state => ({
-  category: state.movie.currentCategory
-  // pageNum: state.movie.currentCategory.currentPage
-});
+
 const dispatchToProps = dispatch => ({
-  fetchMoviesMorese: (pageNum, category) =>
-    dispatch(fetchMoviesMore(pageNum, category))
+  getMore: pageNum => dispatch(fetchMoviesMore(pageNum))
 });
 
 export default connect(
-  mapStateToProps,
+  null,
   dispatchToProps
 )(CardList);
